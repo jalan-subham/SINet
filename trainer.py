@@ -68,8 +68,8 @@ def trainer(train_loader, model, optimizer, epoch, opt, loss_func, total_step):
         loss_im = loss_func(cam_im, gts)
         loss_total = loss_sm + loss_im
 
-        with amp.scale_loss(loss_total, optimizer) as scale_loss:
-            scale_loss.backward()
+        # with amp.scale_loss(loss_total, optimizer) as scale_loss:
+        loss_total.backward()
 
         # clip_gradient(optimizer, opt.clip)
         optimizer.step()
